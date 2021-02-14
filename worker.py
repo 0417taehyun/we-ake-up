@@ -9,7 +9,7 @@ from config   import token, members
 
 
 def create_time():
-    date = (datetime.today() + timedelta(hours = 0)).strftime("%Y-%m-%d")
+    date = (datetime.today() + timedelta(hours = 9)).strftime("%Y-%m-%d")
     return date
 
 
@@ -32,7 +32,7 @@ class Worker():
         date = create_time()
         body = {
             "title": f"{date} 기상 기상!",
-            "body" : f"{date} 기상 기상! 아래 코멘트를 통해 미션을 완료해주세요 :)"
+            "body" : f"{date} 기상 기상! 아래 코멘트에 미션을 남겨 주세요 :)"
         }
 
         res = requests.post(
@@ -68,11 +68,8 @@ class Worker():
         ).json()
 
         success_members = [ data["user"]["login"] for data in res ]
-        penalty_members = []
+        penalty_members = [ member["name"] for member in members if member["github_id"] in success_members ]
 
-        for member in members:
-            if not member["github_id"] in success_members:
-                penalty_members.append(member["name"])
 
         if penalty_members:
             penalty_members = ', '.join(penalty_members)
