@@ -45,7 +45,7 @@ class Worker():
 
         self.slack.chat.post_message(
             "#we-ake-up",
-            f"@channel 기상 기상! 어서 {url} 로 가서 미션 완료해주세요 :)",
+            f"기상 기상! 어서 {url} 로 가서 미션 완료해주세요 :)",
             as_user = True
         )
 
