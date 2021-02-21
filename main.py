@@ -1,8 +1,8 @@
 from config   import github_info, token
-from worker   import Worker
+from worker   import 
 
 
-def lambda_handler():
+def lambda_handler(event, context):
     user_name = github_info["user_name"]
     repo_name = github_info["repo_name"]
 
@@ -13,9 +13,4 @@ def lambda_handler():
         'Content-Type' : 'appliacation/json',
         'Authorization': f'Bearer {github_token}',
     }
-    
-    worker = Worker(url, headers)
-
-    worker.create_issue()
-    worker.close_issue()
 

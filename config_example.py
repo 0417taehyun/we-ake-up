@@ -8,13 +8,9 @@ token       = {
     "GitHub": "YOUR_GITHUB_API_TOKEN"
 }
 
-members     = [
-    {
-        "name": "11기 이태현",
-        "github_id": "0417taehyun"
-    },
-    {
-        "name": "",
-        "github_id": ""
-    }
+slack_channel = "#YOUR_SLACK_CHANNEL"
+
+scope         = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive"
 ]
