@@ -48,7 +48,7 @@ def get_slack(token = token["Slack"]):
     return slack
 
 
-def get_channel_id(channel_name = "we-ake-up"):
+def get_channel_id(channel_name = "we-ake-up-테스트"):
     slack    = get_slack()
     response = slack.conversations.list(limit = 1000)
     channels = response.__dict__["body"]["channels"]
@@ -112,7 +112,7 @@ def get_success_members():
 
 
 def get_penalty_members():
-    members         = get_members()[1:-2]
+    members         = get_members()[1:-1]
     success_members = get_success_members()
     penalty_members = [ member for member in members if not member in success_members ]
     penalty_members = ', '.join(penalty_members)
