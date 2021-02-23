@@ -1,26 +1,28 @@
 import gspread
 
+from slacker                      import Conversations, Slacker
 from oauth2client.service_account import ServiceAccountCredentials
+from datetime                     import datetime
 
-from datetime import datetime
+from config                       import token
+
+# scope = [
+#     "https://spreadsheets.google.com/feeds",
+#     "https://www.googleapis.com/auth/drive"
+# ]
+
+# credential = ServiceAccountCredentials.from_json_keyfile_name("AccessKey.json", scope)
+
+# gc = gspread.authorize(credential)
 
 
-scope = [
-    "https://spreadsheets.google.com/feeds",
-    "https://www.googleapis.com/auth/drive"
-]
+# wks = gc.open_by_key("1eNhqCABLRn37xOSj7q0fUEcbRXs3lyu5CDKCTzWMCig").worksheet("3기")
 
-credential = ServiceAccountCredentials.from_json_keyfile_name("AccessKey.json", scope)
+# date = datetime.today().strftime("%m/%d")[1:]
 
-gc = gspread.authorize(credential)
+# # print(date)
 
+# d = wks.row_values(1)[2:]
 
-wks = gc.open_by_key("1eNhqCABLRn37xOSj7q0fUEcbRXs3lyu5CDKCTzWMCig").worksheet("3기")
+# print(d)
 
-date = datetime.today().strftime("%m/%d")[1:]
-
-# print(date)
-
-d = wks.row_values(1)[2:]
-
-print(d)
