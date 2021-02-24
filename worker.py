@@ -84,10 +84,15 @@ def get_recent_bot_message():
     return response
 
 
-def get_user_display_name(user_id):
+def get_user_name(user_id):
     slack    = get_slack()
     response = slack.users.profile.get(user = user_id)
-    name     = response.__dict__["body"]["profile"]["display_name"]
+    name     = response.__dict__["body"]["profile"]
+
+    if name["display_name"]:
+        name = name["display_name"]
+    else:
+        name = name["real_name"]
 
     return name
 
@@ -104,7 +109,7 @@ def get_success_members():
     for thread in threads:
         try:
             if thread["files"]:
-                success_members.add(get_user_display_name(thread["user"]))
+                success_members.add(get_user_name(thread["user"]))
         except:
             continue
 
